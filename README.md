@@ -126,6 +126,53 @@ There are 21,875 unique patients who had hospital stays longer than the average.
 
 ![Image](https://github.com/user-attachments/assets/2b6ec4bb-2db6-408d-ab4c-64caa6d62bd1)
 
+**7. Which season had the highest number of hospital admissions overall?**
+
+longer version
+```sql
+SELECT 
+  CASE 
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (12, 1, 2) THEN 'Winter'
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (3, 4, 5) THEN 'Spring'
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (6, 7, 8) THEN 'Summer'
+    ELSE 'Fall'
+  END AS admission_season,
+  COUNT(*) AS admissions_count
+FROM hospital_capacity
+GROUP BY 
+  CASE 
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (12, 1, 2) THEN 'Winter'
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (3, 4, 5) THEN 'Spring'
+    WHEN EXTRACT(MONTH FROM date_of_admission) IN (6, 7, 8) THEN 'Summer'
+    ELSE 'Fall'
+  END
+ORDER BY admissions_count DESC;
+```
+shorter code The second version uses a Common Table Expression (CTE) with a WITH clause to define the season once and reuse it throughout the query.
+
+```sql
+WITH seasonal_admissions AS (
+  SELECT 
+    CASE 
+      WHEN EXTRACT(MONTH FROM date_of_admission) IN (12, 1, 2) THEN 'Winter'
+      WHEN EXTRACT(MONTH FROM date_of_admission) IN (3, 4, 5) THEN 'Spring'
+      WHEN EXTRACT(MONTH FROM date_of_admission) IN (6, 7, 8) THEN 'Summer'
+      ELSE 'Fall'
+    END AS season
+  FROM hospital_capacity
+)
+SELECT 
+  season AS admission_season,
+  COUNT(*) AS admissions_count
+FROM seasonal_admissions
+GROUP BY season
+ORDER BY admissions_count DESC;
+```
+Answer:
+The highest overall admission is Summer.
+
+![Image](https://github.com/user-attachments/assets/18365fa3-013f-442c-a55b-ae2d0e2a21e5)
+
 
 
 
