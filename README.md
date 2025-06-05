@@ -268,7 +268,7 @@ Patients are evenly split into four quartiles based on billing amount. The 1st q
 
 
 
-### 10. How many patients with Arthritis, Diabetes, Hypertension, Obesity, Cancer, and Asthma does each hospital treat? Present this information in a pivot table format.
+### 10. How many patients with Arthritis, Diabetes, Hypertension, Obesity, Cancer, and Asthma are treated at each hospital? 
 
 ### 👩‍🏫 Solution
 
@@ -295,8 +295,9 @@ ORDER BY hospital;
 ```
 
 ### Answer: 
-The pivot table above shows how many patients each hospital treats with the selected medical conditions: Arthritis, Diabetes, Hypertension, Obesity, Cancer, and Asthma. 
+The pivot table shows counts of patients with six common conditions by hospital. Each column is a condition, and the last column is the total patients with any of these conditions per hospital.
 
-![image](https://github.com/user-attachments/assets/642af39a-79bd-4a86-8822-7504d2b07074)
+![image](https://github.com/user-attachments/assets/006ad790-a128-4792-be5f-fbbc6cf492ab)
+
 
 
