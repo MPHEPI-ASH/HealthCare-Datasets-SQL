@@ -1,3 +1,4 @@
+test
 --creating tables
 CREATE TABLE hospital_capacity (
   name VARCHAR(100),
