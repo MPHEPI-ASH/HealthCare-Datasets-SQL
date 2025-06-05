@@ -233,7 +233,36 @@ Here is the list of breast cancer risk categories and the number of patients in 
 ![Image](https://github.com/user-attachments/assets/7b25ffe9-5723-40cb-a078-a89e201b2162)
 
 
+### 9. How are hospital patients distributed across billing amount quartiles?
 
+### 👩‍🏫 Solution
+
+```sql
+--creating temp file for billing quartiles and unique_patient
+with billing_quartile as (
+	select 
+		lower (trim(name)) as unique_patient,
+		Billing_amount,
+		ntile(4) over (order by billing_amount) as quartile
+	from hospital_capacity
+)
+--writing the patient per quartile and billing range
+select
+	quartile as billing_quartile,
+	count (distinct unique_patient ) as patient_count,
+	min (billing_amount) as min_billing_amount,
+	max (billing_amount) as max_billing_amount
+from billing_quartile
+group by quartile
+order by quartile desc
+;
+```
+
+### Answer: 
+
+Patients are evenly split into four quartiles based on billing amount. The 1st quartile has the lowest billing range, while the 4th quartile has the highest.
+
+![Image](https://github.com/user-attachments/assets/473c569c-163d-4df0-8a0c-4cd20bff3c97)
 
 
 
