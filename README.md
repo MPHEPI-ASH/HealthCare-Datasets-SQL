@@ -52,6 +52,7 @@ order by gender desc;
 
 ### Answer: 
 On average, males stay 1 day longer than females in the hospital.
+
 ![Image](https://github.com/user-attachments/assets/543b0650-a0fd-4d7a-82e8-0ba0342b1509)
 
 ### 3. What are the 3 most common blood types?
