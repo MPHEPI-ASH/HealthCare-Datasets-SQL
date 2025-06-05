@@ -179,7 +179,57 @@ The highest overall admission is Summer.
 
 ![Image](https://github.com/user-attachments/assets/18365fa3-013f-442c-a55b-ae2d0e2a21e5)
 
+**8. What is the distribution of patients by breast cancer risk level based on gender and blood type?**
 
+**I dont have external data. Generating dummy breast cancer risk level by blood type and gender.** 
+Step 1: Create the temp table
+```sql
+CREATE TEMP TABLE female_blood_risk 
+	(blood_type TEXT,
+  breast_cancer_risk TEXT);
+```
+Step 2: Insert values 
+```sql
+INSERT INTO female_blood_risk VALUES
+  ('O+', 'High Risk'),
+  ('A+', 'High Risk'),
+  ('A-', 'High Risk'),
+  ('O-', 'Low Risk'),
+  ('A-', 'Low Risk'),
+  ('B-', 'Low Risk');
+```
+### 👩‍🏫 Solution
+
+```-- Classify patients by breast cancer risk
+WITH risk_classified AS (
+  SELECT
+    CASE
+      WHEN hc.gender ILIKE 'female' AND fbr.blood_type IS NOT NULL THEN fbr.breast_cancer_risk
+      WHEN hc.gender ILIKE 'female' THEN 'Medium Risk'
+      ELSE 'Unknown Risk'
+    END AS breast_cancer_risk
+  FROM hospital_capacity AS hc
+-- Join on blood type
+  LEFT JOIN female_blood_risk AS fbr
+    ON hc.blood_type = fbr.blood_type
+)
+-- Count patients by risk level
+SELECT 
+  breast_cancer_risk,
+  COUNT(*) AS patient_count
+FROM risk_classified
+GROUP BY breast_cancer_risk
+ORDER BY 
+  CASE breast_cancer_risk
+    WHEN 'High Risk' THEN 1
+    WHEN 'Medium Risk' THEN 2
+    WHEN 'Low Risk' THEN 3
+    ELSE 4
+  END;
+```
+**Answer:**
+Here is the list of breast cancer risk categories and the number of patients in each group:
+![Image](https://github.com/user-attachments/assets/7b25ffe9-5723-40cb-a078-a89e201b2162)
 
 
 
