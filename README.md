@@ -200,7 +200,8 @@ INSERT INTO female_blood_risk VALUES
 ```
 ### 👩‍🏫 Solution
 
-```-- Classify patients by breast cancer risk
+```sql
+-- Classify patients by breast cancer risk
 WITH risk_classified AS (
   SELECT
     CASE
