@@ -1,5 +1,8 @@
-# Using R to convert a CSV file into SQL 'Create Table'
+# Analyzing healthcare datasets with PostgreSQL
 
+
+
+### Using R to convert a CSV file into SQL 'Create Table'
 ### Manually creating `CREATE TABLE` statements for PostgreSQL is time-consuming, especially with large healthcare datasets.
 So I wrote an **R script** to auto-generate the SQL code for me.
 
