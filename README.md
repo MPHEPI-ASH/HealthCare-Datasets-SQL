@@ -20,7 +20,7 @@ create_sql <- sprintf("CREATE TABLE hospital_capacity (\n  %s\n);", sql_cols)
 #printing for copy and paste
 cat(create_sql)
 
-
+**queries.sql**
 ### 1. How many unique patients are in the dataset?
 
 ### 👩‍🏫 Solution
