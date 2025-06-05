@@ -300,4 +300,34 @@ The pivot table shows counts of patients with six common conditions by hospital.
 ![image](https://github.com/user-attachments/assets/006ad790-a128-4792-be5f-fbbc6cf492ab)
 
 
+### 11. How many hospitals have “LLC” in their name, and how frequently do they appear in the dataset?
+### 👩‍🏫 Solution
+
+``` sql
+-- list of hospital with LLC in there name 
+SELECT
+  UPPER(TRIM(hospital)) AS hospital_name,
+  COUNT(*) AS count
+FROM hospital_capacity
+WHERE hospital IS NOT NULL
+GROUP BY hospital_name
+HAVING UPPER(TRIM(hospital)) LIKE '%LLC%'
+ORDER BY count DESC;
+-- total hospital with LLC in there name
+SELECT COUNT(DISTINCT UPPER(TRIM(hospital))) AS llc_hospital_count
+FROM hospital_capacity
+WHERE hospital IS NOT NULL
+  AND UPPER(TRIM(hospital)) LIKE '%LLC%';
+```
+### Answer: 
+here is the list
+
+![image](https://github.com/user-attachments/assets/049d8a5a-b11d-45f9-a4c3-2ed6564bc07e)
+
+There are 1,177 hospitals with LLC in their name.
+
+![image](https://github.com/user-attachments/assets/669c51a2-ee9b-413a-9cc8-6c645eaac1c8)
+
+
+
 
