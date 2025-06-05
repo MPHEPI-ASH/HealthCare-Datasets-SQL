@@ -1,5 +1,0 @@
-*.sql linguist-language=SQL
-git add .gitattributes
-git commit -m "Force GitHub to recognize .sql as SQL"
-git push
-echo "*.sql linguist-language=SQL" > .gitattributes
