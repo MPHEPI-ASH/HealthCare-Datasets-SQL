@@ -268,9 +268,35 @@ Patients are evenly split into four quartiles based on billing amount. The 1st q
 
 
 
+### 10. How many patients with Arthritis, Diabetes, Hypertension, Obesity, Cancer, and Asthma does each hospital treat? Present this information in a pivot table format.
 
+### 👩‍🏫 Solution
 
+``` sql
+--checking the type of medical conditions
+SELECT 
+  medical_condition,
+  COUNT(*) AS condition_count
+FROM hospital_capacity
+GROUP BY medical_condition
+ORDER BY condition_count DESC;
+-- creating a pivot table
+SELECT
+  hospital,
+  COUNT(CASE WHEN medical_condition = 'Arthritis' THEN 1 END) AS arthritis_count,
+  COUNT(CASE WHEN medical_condition = 'Diabetes' THEN 1 END) AS diabetes_count,
+  COUNT(CASE WHEN medical_condition = 'Hypertension' THEN 1 END) AS hypertension_count,
+  COUNT(CASE WHEN medical_condition = 'Obesity' THEN 1 END) AS obesity_count,
+  COUNT(CASE WHEN medical_condition = 'Cancer' THEN 1 END) AS cancer_count,
+  COUNT(CASE WHEN medical_condition = 'Asthma' THEN 1 END) AS asthma_count
+FROM hospital_capacity
+GROUP BY hospital
+ORDER BY hospital;
+```
 
+### Answer: 
+The pivot table above shows how many patients each hospital treats with the selected medical conditions: Arthritis, Diabetes, Hypertension, Obesity, Cancer, and Asthma. 
 
+![image](https://github.com/user-attachments/assets/642af39a-79bd-4a86-8822-7504d2b07074)
 
 
