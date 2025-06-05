@@ -1,3 +1,4 @@
+*.sql linguist-language=SQL
 --creating tables
 CREATE TABLE hospital_capacity (
   name VARCHAR(100),
