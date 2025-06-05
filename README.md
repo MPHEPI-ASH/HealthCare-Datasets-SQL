@@ -229,6 +229,7 @@ ORDER BY
 ```
 **Answer:**
 Here is the list of breast cancer risk categories and the number of patients in each group:
+
 ![Image](https://github.com/user-attachments/assets/7b25ffe9-5723-40cb-a078-a89e201b2162)
 
 
