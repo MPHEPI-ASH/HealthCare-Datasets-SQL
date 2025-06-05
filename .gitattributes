@@ -1,2 +1,1 @@
 *.sql linguist-language=SQL
-Fix GitHub language detection for SQL
