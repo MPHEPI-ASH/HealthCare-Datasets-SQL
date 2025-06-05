@@ -39,6 +39,7 @@ There are 40,235 unique patients in the dataset.
 
 ### 2. On average, which gender stays longer in the hospital?
 
+### 👩‍🏫 Solution
 ```sql
 SELECT
     gender,
@@ -55,7 +56,7 @@ On average, males stay 1 day longer than females in the hospital.
 
 ### 3. What are the 3 most common blood types?
 
-
+### 👩‍🏫 Solution
 ```sql
 SELECT 
     Blood_type, 
@@ -74,7 +75,7 @@ The three most common blood types are B+, AB+, and A-.
 
 ### 4. Who are the top 5 doctors with the highest cumulative billing?
 
-
+### 👩‍🏫 Solution
 ```sql
 SELECT
   INITCAP(LOWER(REPLACE(REPLACE(TRIM(doctor), ' ', '_'), '.', ''))) AS doctor,
@@ -92,6 +93,7 @@ The top 5 doctors with the highest cumulative billing are Michael_Smith, Robert_
 
 ### 5 List the unique patients who stayed in the hospital longer than the average length of stay.
 
+### 👩‍🏫 Solution
 ```sql
 WITH avg_stay AS (
   SELECT AVG(discharge_date - date_of_admission) AS avg_days 
@@ -111,6 +113,7 @@ Here is the list:
 
 ### 6 How many unique patients stayed in the hospital longer than the average length of stay?
 
+### 👩‍🏫 Solution
 ```sql
 WITH avg_stay AS (
   SELECT AVG(discharge_date - date_of_admission) AS avg_days 
@@ -128,6 +131,7 @@ There are 21,875 unique patients who had hospital stays longer than the average.
 
 **7. Which season had the highest number of hospital admissions overall?**
 
+### 👩‍🏫 Solution
 longer version
 ```sql
 SELECT 
@@ -148,6 +152,7 @@ GROUP BY
   END
 ORDER BY admissions_count DESC;
 ```
+### 👩‍🏫 alernative Solution
 shorter code The second version uses a Common Table Expression (CTE) with a WITH clause to define the season once and reuse it throughout the query.
 
 ```sql
